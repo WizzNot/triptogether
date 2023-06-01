@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reg_nav"
+    app:startDestination="@id/loginUser">
+
+    <fragment
+        android:id="@+id/loginUser"
+        android:name="com.example.project.reg.loginUser"
+        android:label="fragment_login_user"
+        tools:layout="@layout/fragment_login_user" >
+        <action
+            android:id="@+id/action_loginUser_to_regUser"
+            app:destination="@id/regUser"
+            app:popUpTo="@id/reg_nav"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_loginUser_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/regUser"
+        android:name="com.example.project.reg.regUser"
+        android:label="fragment_reg_user"
+        tools:layout="@layout/fragment_reg_user" >
+        <action
+            android:id="@+id/action_regUser_to_loginUser"
+            app:destination="@id/loginUser"
+            app:popUpTo="@id/reg_nav"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_regUser_to_infoUser"
+            app:destination="@id/infoUser" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.project.main.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main"/>
+    <fragment
+        android:id="@+id/infoUser"
+        android:name="com.example.project.reg.infoUser"
+        android:label="fragment_info_user"
+        tools:layout="@layout/fragment_info_user" >
+        <action
+            android:id="@+id/action_infoUser_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.project.main.profile"
+        android:label="fragment_main_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_loginUser"
+            app:destination="@id/loginUser" />
+    </fragment>
+</navigation>
