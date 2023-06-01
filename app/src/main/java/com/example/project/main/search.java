@@ -146,8 +146,6 @@ public class search extends Fragment implements SelectListenerString ,DrivingSes
         String url1 = "http://maps.google.com/maps/api/geocode/json?latlng=" +
                 55.660888 + "," + 37.476278 + "&sensor=true&language=ru";
         String url2;
-        //locationmapkit = mapKit.createUserLocationLayer(mapView.getMapWindow());
-        //locationmapkit.setVisible(true);
         InputListener inputListener = new InputListener() {
             @Override
             public void onMapTap(@NonNull Map map, @NonNull Point point) {
