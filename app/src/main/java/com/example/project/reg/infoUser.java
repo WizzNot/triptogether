@@ -48,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class infoUser extends Fragment {
+public class infoUser extends Fragment { //фрагмент для более детальной информации о пользоваетли
 
     SharedPreferences mSettings;
     SharedPreferences.Editor editor;
@@ -62,7 +62,6 @@ public class infoUser extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info_user, container, false);
     }
 
@@ -90,29 +89,28 @@ public class infoUser extends Fragment {
                 String name = nam.getText().toString();
                 String surname = surnam.getText().toString();
                 String patronymic = lolname.getText().toString();
-                if (name.equals(""))
+                if (name.equals(""))//(1)проверка полей (1, 2, 3)
                     nam.setError("Обязательное поле!");
                 else {
-                    if (surnam.equals(""))
+                    if (surnam.equals(""))//(2)
                         surnam.setError("Обязательное поле!");
                     else {
-                        if (lolname.equals(""))
+                        if (lolname.equals(""))//(3)
                             lolname.setError("Обязательное поле!");
                         else {
                             Data request = new Data();
-                            request.setMode("profile");
+                            request.setMode("profile");//ставим мод при котором в теле передаем заполненные расширенные данные профлиля
                             request.setNumber(mSettings.getString(APP_PREF_PHONE, ""));
                             request.setSurname(surname);
                             request.setName(name);
                             request.setPatronymic(patronymic);
-                            // Фото
-                            imageView.buildDrawingCache();
-                            String Base64Str = convert(getBitmapClippedCircle(imageView.getDrawingCache()));
+                            imageView.buildDrawingCache();//берем фотку из ImageView
+                            String Base64Str = convert(getBitmapClippedCircle(imageView.getDrawingCache()));//перевод в кодировку Base64
                             request.setPicture(Base64Str);
                             Call<Data> call = CreateService(Service.class, DB_URL).give_date(request);
-                            call.enqueue(new Callback<Data>() {
+                            call.enqueue(new Callback<Data>() {//запрос
                                 @Override
-                                public void onResponse(Call<Data> call, Response<Data> response) {
+                                public void onResponse(Call<Data> call, Response<Data> response) {//ответ
                                     Log.d("lol", "onResponse");
                                     if (response.isSuccessful()) {
                                         Log.d("lol", "response is successful");
@@ -148,7 +146,7 @@ public class infoUser extends Fragment {
         Navigation.findNavController(getView()).navigate(R.id.action_infoUser_to_mainActivity);
     }
 
-    private void loadImage() {
+    private void loadImage() {//диалог с выбором "камера" или "галерея"
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheet2layout);
@@ -156,15 +154,15 @@ public class infoUser extends Fragment {
         Button btGall = dialog.findViewById(R.id.gallery);
         Button btCam = dialog.findViewById(R.id.cam);
 
-            //Фото из галереии
+
         btGall.setOnClickListener(view -> {
-            ImagePicker.with(this).galleryOnly().crop().start();
+            ImagePicker.with(this).galleryOnly().crop().start();//фото из галереии
             dialog.cancel();
         });
 
-            //Фото с камеры
+
         btCam.setOnClickListener(view -> {
-            ImagePicker.with(this).cameraOnly().crop().start();
+            ImagePicker.with(this).cameraOnly().crop().start();//фото с камеры
             dialog.cancel();
         });
 
@@ -179,6 +177,6 @@ public class infoUser extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         image = data.getData();
-        Picasso.get().load(image).into(imageView);
+        Picasso.get().load(image).into(imageView); //загрузка круглого изоброжния в ImageView
     }
 }

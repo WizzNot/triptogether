@@ -15,7 +15,7 @@ import com.example.project.R;
 import com.example.project.main.MainActivity;
 import com.yandex.mapkit.MapKitFactory;
 
-public class RegActivity extends AppCompatActivity {
+public class RegActivity extends AppCompatActivity {//активити для фрагментов пакета reg
     SharedPreferences mSettings;
     SharedPreferences.Editor editor;
 
@@ -29,46 +29,15 @@ public class RegActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.d("leavehint", "onBackPressed");
-    }
-    @Override
-    protected void onUserLeaveHint() {
-        Log.d("leavehint", "onUserLeaveHint");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("leavehint", "onStop");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("leavehint", "onRestart");
-        Log.d("leavehint", mSettings.getString(APP_LAST_STATUS, ""));
-        if (mSettings.getString(APP_LAST_STATUS, "").equals("1")){
-            editor.putString(APP_LAST_STATUS, " ");
-            editor.apply();
-            startActivity(new Intent(RegActivity.this, MainActivity.class));
-        }
-    }
+    }//защита от нажатий назад
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("leavehint", "onResume");
-        Log.d("leavehint", mSettings.getString(APP_LAST_STATUS, ""));
         if (mSettings.getString(APP_LAST_STATUS, "").equals("1")){
             editor.putString(APP_LAST_STATUS, " ");
             editor.apply();
             startActivity(new Intent(RegActivity.this, MainActivity.class));
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("leavehint", "destroy");
     }
 }

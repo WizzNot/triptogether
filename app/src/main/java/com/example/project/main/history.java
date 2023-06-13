@@ -31,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class history extends Fragment {
+public class history extends Fragment { // Фрагмент истории и запланированных поездок
     public static final String APP_PREFERENCES = "mysettings";
 
     public static final String APP_PREFERENCES_PHONE = "PHONE";
@@ -42,7 +42,7 @@ public class history extends Fragment {
     Button active;
     Button history;
     String number;
-    private final ArrayList<Elements> arr = new ArrayList<>();
+    private final ArrayList<Elements> arr = new ArrayList<>(); // arr и mas - списки элементов recyclerview для запланированных поездок и истории
     private final ArrayList<Elements> mas = new ArrayList<>();
 
 
@@ -73,7 +73,7 @@ public class history extends Fragment {
         dataWalker.setMode("getwalks");
         Call<Data> call = CreateService(Service.class, DB_URL).give_date(data);
         Call<Data> callWalker = CreateService(Service.class, DB_URL).give_date(dataWalker);
-        call.enqueue(new Callback<Data>() {
+        call.enqueue(new Callback<Data>() { // получаем поездки
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 if(response.isSuccessful()) {
@@ -107,7 +107,7 @@ public class history extends Fragment {
                 Log.d("lol", "failure");
             }
         });
-        callWalker.enqueue(new Callback<Data>() {
+        callWalker.enqueue(new Callback<Data>() { // получаем прогулки
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 if(response.isSuccessful()) {
@@ -143,7 +143,7 @@ public class history extends Fragment {
         historydata.setNumber(number);
         historydata.setMode("gethistory");
         Call<Data> datacall = CreateService(Service.class, DB_URL).give_date(historydata);
-        datacall.enqueue(new Callback<Data>() {
+        datacall.enqueue(new Callback<Data>() { // получаем историю поездок
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 if(response.isSuccessful()) {

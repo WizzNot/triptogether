@@ -21,7 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.project.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity { // Главная активность с AppBar, на ней работают экран с картой, история профиль и все поездки
 
     SharedPreferences mSettings;
     SharedPreferences.Editor editor;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d("backpressed", "lol");
-    }
+    } // защита от нажатий назад
     @Override
     protected void onUserLeaveHint() {
         Log.d("leavehintM", "lol");

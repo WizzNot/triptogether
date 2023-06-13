@@ -1,7 +1,7 @@
 package com.example.project.reg;
 
 public class Valid {
-    public static String isValid(String password) {
+    public static String isValid(String password) {//функция проверки защищенности предлогаемого пользователем пароля
         int min = 5;
         int max = 16;
         int digit = 0;

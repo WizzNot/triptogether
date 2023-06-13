@@ -116,7 +116,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class search extends Fragment implements UserLocationObjectListener {
+public class search extends Fragment implements UserLocationObjectListener { // Фрагмент с картой, тут мы размещаем поездки
 
     private  boolean PlaceListenTo = false;
     private  boolean PlaceListenFrom = false;
@@ -180,7 +180,7 @@ public class search extends Fragment implements UserLocationObjectListener {
     private LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationUpdated(@NonNull Location location) {
-            myLocation = location.getPosition();
+            myLocation = location.getPosition(); // получение нашего местонахождения
         }
 
         @Override
@@ -190,7 +190,7 @@ public class search extends Fragment implements UserLocationObjectListener {
     };
     private final InputListener inputListener = new InputListener() {
         @Override
-        public void onMapTap(@NonNull Map map, @NonNull Point point) {
+        public void onMapTap(@NonNull Map map, @NonNull Point point) { // обработчик нажатия на карту
             if (onepoi.getText().toString().equals("")){
                 bitmap = drawSimpleColorfulCircle(bitmap, Color.BLUE);
                 if (PlaceListenTo) {
@@ -241,7 +241,7 @@ public class search extends Fragment implements UserLocationObjectListener {
 
         }
     };
-    public void showSettingsAlert() {
+    public void showSettingsAlert() { // диалог включения геоданных
         final AlertDialog dialog = new AlertDialog
                 .Builder(getContext())
                 .setTitle("Геоданные")
@@ -274,7 +274,7 @@ public class search extends Fragment implements UserLocationObjectListener {
             }
         });
     }
-    private void dialogForAddress(){
+    private void dialogForAddress(){ // диалог который выходит при заполнении адреса
         Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheet5layout);
@@ -300,7 +300,7 @@ public class search extends Fragment implements UserLocationObjectListener {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable editable) { // заполнение подсказок пользователю
                 suggests.clear();
                 suggestSession.suggest(editable.toString(), new BoundingBox(new Point((float)(mapView.getWidth() * 0.5), (float)(mapView.getHeight() * 0.5)),
                         new Point((float)(mapView.getWidth() * 0.5), (float)(mapView.getHeight() * 0.83))), new SuggestOptions().setUserPosition(myLocation).setSuggestWords(false).setSuggestTypes(SuggestType.BIZ.value), new SuggestSession.SuggestListener() {
@@ -372,7 +372,7 @@ public class search extends Fragment implements UserLocationObjectListener {
 
             }
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable editable) { // заполнение подсказок
                 suggests.clear();
                 suggestSession.suggest(editable.toString(), new BoundingBox(new Point((float)(mapView.getWidth() * 0.5), (float)(mapView.getHeight() * 0.5)),
                         new Point((float)(mapView.getWidth() * 0.5), (float)(mapView.getHeight() * 0.83))), new SuggestOptions().setUserPosition(myLocation).setSuggestWords(false).setSuggestTypes(SuggestType.BIZ.value), new SuggestSession.SuggestListener() {@Override
@@ -389,7 +389,7 @@ public class search extends Fragment implements UserLocationObjectListener {
                     Log.d("ahjdklsf", String.valueOf(suggests.size()));
                     adapterSuggests = new RecAdapterSuggests(suggests, getActivity(), new SelectSuggest() {
                         @Override
-                        public void onItemClicked(Suggests suggest) {
+                        public void onItemClicked(Suggests suggest) { // выставление в поля адресов адрес выбранного элемента
                             if (suggest.getAddress().equals("empty"))
                                 kuda.setText(suggest.getGeoName());
                             else kuda.setText(suggest.getAddress() + ", " + suggest.getGeoName());
@@ -432,7 +432,7 @@ public class search extends Fragment implements UserLocationObjectListener {
                 });
             }
         });
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() { // закрытие диалога
             @Override
             public void onCancel(DialogInterface dialogInterface) {
                 mapView.getMap().getMapObjects().clear();
@@ -493,7 +493,7 @@ public class search extends Fragment implements UserLocationObjectListener {
         paint.setAntiAlias(true);
         return bitmap;
     }
-    private void dialogForComm(){
+    private void dialogForComm(){ // диалог деталей события
         Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheet4layout);
@@ -507,7 +507,7 @@ public class search extends Fragment implements UserLocationObjectListener {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (comm.getText().toString().equals(""))
+                if (comm.getText().toString().equals("")) // защита от пустых полей
                     comm.setText("Добрый день!");
                 if (cost.getText().toString().equals("") && (eventType.getSelectedItem().toString().equals("путешествие") ||
                         eventType.getSelectedItem().toString().equals("прогулка"))) cost.setText("Не указан");
@@ -544,7 +544,7 @@ public class search extends Fragment implements UserLocationObjectListener {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
-    private void submitDriving(Point FromPoint, Point KudaPoint){
+    private void submitDriving(Point FromPoint, Point KudaPoint){ // построение маршрута по двух точкам
         DrivingOptions drivingOptions = new DrivingOptions();
         VehicleOptions vehicleOptions = new VehicleOptions();
         ArrayList<RequestPoint> requestPoints = new ArrayList<>();
@@ -621,7 +621,7 @@ public class search extends Fragment implements UserLocationObjectListener {
 
         addAbout.setOnClickListener(view12 -> dialogForComm());
 
-        add.setOnClickListener(view1 -> {
+        add.setOnClickListener(view1 -> { // создание поездки (открытие календаря)
             if (fromPoint != null && kudaPoint != null) {
                 new SingleDateAndTimePickerDialog.Builder(getContext())
                         .bottomSheet()
@@ -649,7 +649,7 @@ public class search extends Fragment implements UserLocationObjectListener {
                                 String dataa = date.toString();
                                 Data data = new Data();
                                 data.setMode("puttravels");
-                                if (app_event[0].equals("попутчик")) {
+                                if (app_event[0].equals("попутчик")) { // создание самой поездки
                                     data.setDriver("empty");
                                     data.setWalker("empty");
                                     data.setCompanion(mSettings.getString(APP_PREF_PHONE, ""));
@@ -695,7 +695,7 @@ public class search extends Fragment implements UserLocationObjectListener {
                                     data.setText(comm);
                                 }
                                 Call<Data> call = CreateService(Service.class, DB_URL).give_date(data);
-                                call.enqueue(new Callback<Data>() {
+                                call.enqueue(new Callback<Data>() { // отправление запроса на сервер для добавления поездки
                                     @Override
                                     public void onResponse(Call<Data> call, Response<Data> response) {
                                         Log.d("lol", "onResponse");

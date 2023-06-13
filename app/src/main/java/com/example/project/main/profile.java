@@ -47,7 +47,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class profile extends Fragment {
+public class profile extends Fragment { // фрагмент профиля
 
     public static final String APP_PREFERENCES = "mysettings";
 
@@ -95,10 +95,10 @@ public class profile extends Fragment {
         changeName = view.findViewById(R.id.changeName);
         safebutton = view.findViewById(R.id.safety_button);
 
-        safebutton.setOnClickListener(new View.OnClickListener() {
+        safebutton.setOnClickListener(new View.OnClickListener() { // слушатель на кнопку руководства по кнопкам
             @Override
             public void onClick(View view) {
-                final AlertDialog dialog = new AlertDialog
+                final AlertDialog dialog = new AlertDialog // создание диалога с руководством
                         .Builder(getContext())
                         .setTitle("Руководство по безопасности!")
                         .setMessage("Существует 3 вида галочек: серая, синяя, зелёная. Человек с серой галочкой не подтверждал аккаунт и ездить с ним следует на свой страх и риск. Человек с синей галочкой подтвердил аккаунт с помощью вконтакте, но его аккаунт не подтвержден с помощью госуслуг/id аккаунта в банке. Человек с зеленой галочкой подтвердил подлинность своих данных, вы можете ему доверять.")
@@ -133,14 +133,14 @@ public class profile extends Fragment {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString(APP_PREFERENCES_PHONE, "");
+                editor.putString(APP_PREFERENCES_PHONE, ""); // очистка sharedpreferences при нажатии на кнопку выход
                 editor.apply();
                 if(mSettings.getString(APP_PREFERENCES_PHONE, "").equals("")){
                     startActivity(new Intent(getContext(), RegActivity.class));
                 }
             }
         });
-        SOS.setOnClickListener(new View.OnClickListener() {
+        SOS.setOnClickListener(new View.OnClickListener() { // при 3-х кратном нажатии на кнопку SOS вызов номера 112
             @Override
             public void onClick(View view) {
                 Log.d("sos", Integer.toString(c));
@@ -151,7 +151,7 @@ public class profile extends Fragment {
                 else c++;
             }
         });
-        changePassword.setOnClickListener(new View.OnClickListener() {
+        changePassword.setOnClickListener(new View.OnClickListener() { // диалог изменения пароля при нажатии на сменить пароль
                 @Override
                 public void onClick(View view) {
                     Log.d("dfkajsd","fdsiaf");
@@ -170,7 +170,7 @@ public class profile extends Fragment {
                     secondedit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     thirdedit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     changeprofiletext.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    changeprofilestart.setOnClickListener(new View.OnClickListener() {
+                    changeprofilestart.setOnClickListener(new View.OnClickListener() { // запрос на сервер изменение пароля
                         @Override
                         public void onClick(View view) {
                             Log.d("change", "changepass");
@@ -216,7 +216,7 @@ public class profile extends Fragment {
                 }
             }
         );
-        changeName.setOnClickListener(new View.OnClickListener() {
+        changeName.setOnClickListener(new View.OnClickListener() { // кнопка изменения имени
             @Override
             public void onClick(View view) {
                 Dialog dialog = new Dialog(getContext());
@@ -234,7 +234,7 @@ public class profile extends Fragment {
                 changeprofiletext.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                 secondedit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                 thirdedit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
-                changeprofilestart.setOnClickListener(new View.OnClickListener() {
+                changeprofilestart.setOnClickListener(new View.OnClickListener() { // запрос изменения имени
                     @Override
                     public void onClick(View view) {
                         Log.d("change", "changename");
@@ -267,7 +267,7 @@ public class profile extends Fragment {
         });
     }
     private void request(){
-        Data data = new Data();
+        Data data = new Data(); // запрос, который выполняется при заходе в профиль. Получение данных и выставление по соответствующим полям
         data.setNumber(mSettings.getString(APP_PREFERENCES_PHONE, ""));
         data.setMode("getprofile");
         Call<Data> call = CreateService(Service.class, DB_URL).give_date(data);

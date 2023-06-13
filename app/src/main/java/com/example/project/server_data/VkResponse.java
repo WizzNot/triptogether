@@ -3,7 +3,7 @@ package com.example.project.server_data;
 import java.util.ArrayList;
 
 
-public class VkResponse{
+public class VkResponse{ //POJO для десериализация данных ответа VkApi
     public ArrayList<Response_users_get> response;
 
     public ArrayList<Response_users_get> getResponse() {

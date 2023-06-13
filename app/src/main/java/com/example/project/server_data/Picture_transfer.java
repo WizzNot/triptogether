@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class Picture_transfer {
+public class Picture_transfer { //набор функция для передачи изображения
     public static Bitmap getBitmap(File file){
         FileInputStream inputStream;
         {

@@ -11,7 +11,7 @@ public interface Service {
     @GET("/")
     Call<Data> fetchUser();
     @POST("/")
-    Call<Data> give_date(@Body Data requestData);
+    Call<Data> give_date(@Body Data requestData);//интерфес для POST запроса к серверу
     @GET("/method/{method}")
-    Call<VkResponse> vkRequest(@Path("method") String method, @Query("access_token") String access_token, @Query("fields") String fields, @Query("v") String v);
+    Call<VkResponse> vkRequest(@Path("method") String method, @Query("access_token") String access_token, @Query("fields") String fields, @Query("v") String v);//интерфес для GET запроса к VkApi
 }

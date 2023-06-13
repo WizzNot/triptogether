@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Data implements Serializable {
+public class Data implements Serializable { //POJO для сериализация данных запроса и десериализация данных ответа
     @SerializedName("reg")
     @Expose
     private Boolean reg;
@@ -232,8 +232,6 @@ public class Data implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private final static long serialVersionUID = 7697500026652374235L;
 
     @Override
     public String toString() {

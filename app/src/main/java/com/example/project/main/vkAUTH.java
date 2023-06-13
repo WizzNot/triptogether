@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class vkAUTH extends Activity {
+public class vkAUTH extends Activity { //активит в котором запускается активити для авторизации Вконтакте
     Button vkAuth;
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_PHONE = "PHONE";
@@ -43,15 +43,15 @@ public class vkAUTH extends Activity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!VK.onActivityResult(requestCode, resultCode, data, new VKAuthCallback() {
+        if (!VK.onActivityResult(requestCode, resultCode, data, new VKAuthCallback() { //Обработчик результата активности вохода
             @Override
-            public void onLogin(@NonNull VKAccessToken vkAccessToken) {
+            public void onLogin(@NonNull VKAccessToken vkAccessToken) { //если авторизация прошла успешно, то получаем access token по которому в дольнейшем сможем получать данные из аккаунта в ВК
                 To_verif to_verif = new To_verif(vkAccessToken, mSettings.edit());
-                to_verif.start();
+                to_verif.start(); //запускаем проверку верификации пользователся и последующую загрузку данных на сервер
                 startActivity(new Intent(vkAUTH.this, MainActivity.class));
             }
             @Override
-            public void onLoginFailed(int i) {
+            public void onLoginFailed(int i) { //если авторизация прошла неуспешно(пользователь вышел с окна авторизации или нажал не разрешить)
                 startActivity(new Intent(vkAUTH.this, MainActivity.class));
             }
         })) super.onActivityResult(requestCode, resultCode, data);
@@ -62,7 +62,7 @@ public class vkAUTH extends Activity {
             VK.login(vkAUTH.this);
         }
     }
-    class To_verif extends Thread{
+    class To_verif extends Thread{ //поток с запуском авторизации
         VKAccessToken vkAccessToken;
         SharedPreferences.Editor editor;
         To_verif(VKAccessToken vkAccessToken, SharedPreferences.Editor editor){
@@ -72,33 +72,22 @@ public class vkAUTH extends Activity {
 
         @Override
         public void run() {
-            Callback<VkResponse> a = new Callback<VkResponse>() {
-                @Override
-                public void onResponse(Call<VkResponse> call, Response<VkResponse> response) {
-
-                }
-
-                @Override
-                public void onFailure(Call<VkResponse> call, Throwable t) {
-
-                }
-            };
-            Call<VkResponse> call = CreateService(Service.class, VK_API_URL).vkRequest("users.get", vkAccessToken.getAccessToken(), "oauth_verification", "5.204");
+            Call<VkResponse> call = CreateService(Service.class, VK_API_URL).vkRequest("users.get",
+                    vkAccessToken.getAccessToken(), "oauth_verification", "5.204");//проверяем поле "oauth_verification" если пусто то пользователь не верефицирован
             call.enqueue(new Callback<VkResponse>() {
                 @Override
                 public void onResponse(Call<VkResponse> call, Response<VkResponse> response) {
                     if (response.isSuccessful()) {
-                        if (response.body().getResponse().get(0).getOauth_verification().isEmpty()){
+                        if (response.body().getResponse().get(0).getOauth_verification().isEmpty()){//проверяем поле "oauth_verification" если пусто то пользователь не верефицирован, инче верефикация есть
                             Data data = new Data();
-                            data.setMode("verification");
+                            data.setMode("verification");//ставим мод для передачи  ссылки на вк
                             data.setVkAccessToken("https://vk.com/id" + Integer.toString(vkAccessToken.getUserId()));
                             if (auth_index != null) {
                                 data.setNumber(vkAccessToken.getAccessToken());
                                 editor.putString(APP_PREFERENCES_PHONE, vkAccessToken.getAccessToken());
                                 editor.apply();
-                            }
+                            } //передаем ссылку на страницу в вк по vkID, полученный по access token
                             else data.setNumber("empty");
-                            data.setMode("verification");
                             data.setNumber(mSettings.getString(APP_PREFERENCES_PHONE, ""));
                             Call<Data> call1 = CreateService(Service.class, DB_URL).give_date(data);
                             call1.enqueue(new Callback<Data>() {
@@ -115,7 +104,6 @@ public class vkAUTH extends Activity {
                         } else {
                             Data data = new Data();
                             data.setMode("verification");
-                            data.setVkAccessToken(vkAccessToken.getAccessToken());
                             Log.d("verification_1", "thread_run");
                             if (auth_index != null) {
                                 data.setNumber(vkAccessToken.getAccessToken());
@@ -123,16 +111,16 @@ public class vkAUTH extends Activity {
                                 editor.apply();
                             }
                             else data.setNumber("empty");
-                            data.setMode("trueverification");
+                            data.setMode("trueverification");//ставим мод если у человек есть верефикация
                             data.setVkAccessToken("https://vk.com/id" + Integer.toString(vkAccessToken.getUserId()));
                             Log.d("verification_1", mSettings.getString(APP_PREFERENCES_PHONE, ""));
                             data.setNumber(mSettings.getString(APP_PREFERENCES_PHONE, ""));
                             Data trueverif = new Data();
                             trueverif.setMode("verification");
-                            trueverif.setVkAccessToken(vkAccessToken.getAccessToken());
+                            trueverif.setVkAccessToken("https://vk.com/id" + Integer.toString(vkAccessToken.getUserId()));
                             trueverif.setNumber(mSettings.getString(APP_PREFERENCES_PHONE, ""));
                             Call<Data> trueverifdata = CreateService(Service.class, DB_URL).give_date(trueverif);
-                            trueverifdata.enqueue(new Callback<Data>() {
+                            trueverifdata.enqueue(new Callback<Data>() { // запрос на сервер для зеленой галочки
                                 @Override
                                 public void onResponse(Call<Data> call, Response<Data> response) {
                                     Log.d("true_verification", "success");
