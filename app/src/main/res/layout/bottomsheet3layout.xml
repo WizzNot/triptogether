@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+    <TextView
+        android:id="@+id/choosetxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Ваш автопарк"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutEdit"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintHeight_max="300dp"
+            android:id="@+id/recDialog"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <EditText
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/newCars"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/recDialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            android:hint="Ваше новое авто"
+            android:textColorHint="@color/dialog_choose_text_color"
+            android:layout_marginEnd="60dp"
+            android:layout_height="50dp"/>
+
+        <ImageView
+            android:src="@drawable/check"
+            android:id="@+id/check"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@id/recDialog"
+            app:layout_constraintStart_toEndOf="@id/newCars"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".main.search">
+
+
+
+
+    <com.yandex.mapkit.mapview.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </com.yandex.mapkit.mapview.MapView>
+
+    <ImageButton
+        android:id="@+id/show_location"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded_button2"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arrow_turn"
+        app:layout_constraintBottom_toTopOf="@+id/card"
+        app:layout_constraintEnd_toEndOf="@+id/mapview" />
+
+    <ImageButton
+        android:id="@+id/show_traffic"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button2"
+        android:scaleType="fitCenter"
+        android:src="@drawable/traffic_turn"
+        app:layout_constraintBottom_toTopOf="@+id/show_location"
+        app:layout_constraintEnd_toEndOf="@+id/mapview" />
+    <ImageButton
+        android:id="@+id/show_way"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button2"
+        android:scaleType="fitCenter"
+        android:src="@drawable/driving_router_icon"
+        app:layout_constraintBottom_toTopOf="@+id/show_traffic"
+        app:layout_constraintEnd_toEndOf="@+id/mapview" />
+    <ImageButton
+        android:id="@+id/clear_map"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button2"
+        android:scaleType="fitCenter"
+        android:src="@drawable/clear_icon"
+        app:layout_constraintBottom_toTopOf="@+id/show_way"
+        app:layout_constraintEnd_toEndOf="@+id/mapview" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:cardBackgroundColor="#00FFFF00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/aboutEvent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="добавить сведения о событии"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="#aac4c3"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="-10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="200dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/Frompoint"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Откуда"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingLeft="16dp"
+                android:textColor="@color/zvet"
+                android:textColorHint="@color/zvet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/onePoint"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_border"
+                android:hint="Куда"
+                android:paddingLeft="16dp"
+                android:textColor="@color/zvet"
+                android:textColorHint="@color/zvet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Frompoint" />
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Разместить"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/onePoint" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

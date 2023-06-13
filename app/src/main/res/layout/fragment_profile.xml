@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".main.profile">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profile"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#282828"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/zvet"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/profile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:id="@+id/photoProfilya"/>
+
+                    <ImageView
+                        android:id="@+id/Podtverjdenie"
+                        android:layout_width="102dp"
+                        android:layout_height="83dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="100dp"
+                        android:src="@drawable/grey_tick"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/NaMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="Максимка"
+                        android:textSize="36sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/safety_button"
+                        android:layout_width="30dp"
+                        android:layout_height="29dp"
+                        android:background="@drawable/rounded_button2"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/de878546f6a299a84423e9ac72b743af"
+                        app:layout_constraintBottom_toBottomOf="@+id/Podtverjdenie"
+                        app:layout_constraintEnd_toStartOf="@+id/photoProfilya"
+                        app:layout_constraintHorizontal_bias="0.607"
+                        app:layout_constraintStart_toEndOf="@+id/Podtverjdenie" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/settings"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/changePassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="114dp"
+                        android:layout_weight="1"
+                        android:background="@color/zvet"
+                        android:onClick="map">
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/change"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Сменить пароль"
+                            android:textSize="19sp"
+                            app:layout_constraintStart_toEndOf="@+id/imageView7"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="43dp"
+                            android:layout_height="51dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/changepass"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="#37000000" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/changeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="107dp"
+                        android:background="@color/zvet"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/change"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Сменить имя"
+                            android:textSize="19sp"
+                            app:layout_constraintStart_toEndOf="@+id/imageView8"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="41dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/changename"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/exit"
+                android:layout_width="360dp"
+                android:layout_height="45dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/rounded_border"
+                android:text="Выход"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/settings" />
+
+            <Button
+                android:id="@+id/vKauth"
+                android:layout_width="360dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rounded_border"
+                android:text="войти через вк"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exit" />
+
+            <Button
+                android:id="@+id/SOS"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="16dp"
+                android:text="нажмите три раза для совершения экстренного вызова"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vKauth" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

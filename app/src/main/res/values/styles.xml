@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppCompat" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/zvet</item>
+        <item name="colorPrimaryDark">#00FFFFFF</item>
+        <item name="colorAccent">@color/zvet</item>
+        <item name="android:textColorPrimary">@color/zvet</item>
+        <item name="android:windowBackground">#aac4c3</item>
+        <item name="android:navigationBarColor">#00FFFFFF</item>
+        <item name="android:button">@color/zvet</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

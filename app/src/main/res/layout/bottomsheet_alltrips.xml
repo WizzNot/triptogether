@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+
+    <TextView
+        android:id="@+id/TextView7"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Точка назначения: "
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:text="Дата и время: "
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView7" />
+
+    <TextView
+        android:id="@+id/frompoi"
+        android:layout_width="256dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tphnumber" />
+
+    <TextView
+        android:id="@+id/topoi"
+        android:layout_width="256dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/frompoi" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="253dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/topoi" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="365dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/tphnumber"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/namesurname" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="ФИО: "
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comment" />
+
+    <TextView
+        android:id="@+id/namesurname"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/comment" />
+
+    <ImageView
+        android:id="@+id/pictureprof"
+        android:layout_width="214dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Номер телефона: "
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Точка отбытия: "
+        android:textColor="@color/zvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/addbut"
+        android:layout_width="166dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="Запланировать"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/addtocontbut"
+        android:layout_width="171dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="В контакты"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addbut"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/vkbutton"
+        android:layout_width="201dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_button"
+        android:text="Открыть страницу ВКонтакте"
+        android:textAllCaps="false"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/addtocontbut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        app:layout_constraintVertical_bias="0.254" />
+
+    <ImageView
+        android:id="@+id/podtvpic"
+        android:layout_width="73dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/addbut"
+        app:layout_constraintStart_toEndOf="@+id/vkbutton"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/comment"
+        android:background="@drawable/textview_rect"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="335dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="12dp"
+        android:text="empty"
+        android:textColor="@color/zvet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pictureprof" />
+</androidx.constraintlayout.widget.ConstraintLayout>

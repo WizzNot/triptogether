@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+    <TextView
+        android:id="@+id/choosetxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Детали события \n (вы можете указать желаемые указания к событию)"
+        android:textAlignment="center"
+        android:textColor="@color/zvet"
+        android:textSize="15sp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutEdit"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <Spinner
+            android:id="@+id/eventType"
+            android:layout_width="170dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:entries="@array/eventType"
+            app:layout_constraintStart_toEndOf="@+id/textView1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/aboutEventcomm"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="40dp"
+            android:hint="Коментарий к событию"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/zvet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cost" />
+
+        <EditText
+            android:id="@+id/cost"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/countPass" />
+
+        <EditText
+            android:id="@+id/countPass"
+            android:layout_width="170dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/eventType"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="170dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="2dp"
+            android:text="Тип события*"
+            android:textColor="@color/zvet"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:text="Цена (если нет, то оставьте поле пустым)"
+            android:textColor="@color/zvet"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="170dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="2dp"
+            android:text="Количество попутчиков"
+            android:textColor="@color/zvet"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+        <ImageView
+            android:id="@+id/check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cost"
+            app:layout_constraintTop_toBottomOf="@+id/countPass" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
