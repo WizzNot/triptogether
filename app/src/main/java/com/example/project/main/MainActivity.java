@@ -23,8 +23,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity { // Главная активность с AppBar, на ней работают экран с картой, история профиль и все поездки
 
-    SharedPreferences mSettings;
-    SharedPreferences.Editor editor;
 
     BottomNavigationView navView;
     @Override
@@ -37,26 +35,10 @@ public class MainActivity extends AppCompatActivity { // Главная акти
                 R.id.history, R.id.search, R.id.profile, R.id.allTrips).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(navView, navController);
-
-        mSettings = MainActivity.this.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
-        editor = mSettings.edit();
     }
 
     @Override
     public void onBackPressed() {
         Log.d("backpressed", "lol");
     } // защита от нажатий назад
-    @Override
-    protected void onUserLeaveHint() {
-        Log.d("leavehintM", "lol");
-    }
-
-    @Override
-    protected void onDestroy() {
-        editor.putString(APP_LAST_STATUS, "1");
-        editor.apply();
-
-        super.onDestroy();
-        Log.d("leavehintM", "destroy");
-    }
 }
